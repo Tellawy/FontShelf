@@ -5,20 +5,7 @@
 <h1 align="center">FontShelf</h1>
 
 <p align="center">
-  <strong>Every Font. One Intelligent Shelf.</strong><br>
-  A fast, offline-first font manager and visual typography studio for Windows 10 &amp; 11.
-</p>
-
-<p align="center">
-  <a href="https://apps.microsoft.com/detail/YOUR_STORE_ID_HERE"><strong>Get on Microsoft Store</strong></a>
-  &nbsp;·&nbsp;
-  <a href="https://tellawy.github.io/FontShelf/"><strong>Landing Page</strong></a>
-  &nbsp;·&nbsp;
-  <a href="https://tellawy.github.io/FontShelf/privacy.html"><strong>Privacy Policy</strong></a>
-</p>
-
-<p align="center">
-  <img src="assets/FontShelf-Hero.png" alt="FontShelf — Offline Font Studio for Windows" width="100%">
+  <img src="assets/1.png" alt="FontShelf" width="100%">
 </p>
 
 ---
@@ -37,7 +24,7 @@ Pay once and own your studio forever: **no subscriptions, no accounts, and zero 
 - **Paste or Drop Any Image** — Press `Ctrl+V`, drag-and-drop, or pick any screenshot, poster, or logo.
 - **Interactive Crop & Auto-Level** — Draw a tight selection around any line of lettering and automatically straighten tilted text before matching.
 - **100% On-Device Neural Matching** — Ranks visually similar fonts with accuracy percentages completely offline across **Local fonts**, **Watched Folders**, **Bundled fonts**, and **2,000+ pre-indexed Google Fonts**.
-- **Source Switching & Live Re-Scoring** — Switch match sources on the fly from the `MATCHED IMAGE` panel, add optional text or language hints, and preview custom text live across matched results.
+- **Source Switching & Live Re-Scoring** — Switch match sources on the fly, add optional text or language hints, and preview custom text live across matched results.
 
 ### 2. Dynamic Themes From Any Image
 - **Extract Palettes Automatically** — Drop any photo or brand artwork to theme the entire app in harmonious, accessible **Dark** or **Light** color schemes.
@@ -70,22 +57,22 @@ Pay once and own your studio forever: **no subscriptions, no accounts, and zero 
 <table>
   <tr>
     <td width="50%">
-      <img src="assets/preview-amber.jpg" alt="Custom Image Themes">
-      <p align="center"><sub><strong>Dynamic Image Themes</strong> — Custom Amber Dark palette with Arabic &amp; Latin previews</sub></p>
+      <img src="assets/1.png" alt="FontShelf Amber Dark Theme">
+      <p align="center"><sub><strong>Amber Dark Theme</strong> — Dynamic image palette with Arabic &amp; Latin previews</sub></p>
     </td>
     <td width="50%">
-      <img src="assets/preview-match-results.jpg" alt="Offline Visual Font Match">
-      <p align="center"><sub><strong>Offline Visual Match</strong> — Ranked accuracy percentages across local &amp; Google Fonts</sub></p>
+      <img src="assets/4.png" alt="FontShelf Daylight Light Theme">
+      <p align="center"><sub><strong>Daylight Light Theme</strong> — High-contrast light workspace</sub></p>
     </td>
   </tr>
   <tr>
     <td width="50%">
-      <img src="assets/preview-grid.jpg" alt="Grid View & Family Grouping">
-      <p align="center"><sub><strong>Grid View &amp; Families</strong> — Multi-column cards with inline family expansion</sub></p>
+      <img src="assets/7.png" alt="FontShelf Forest Emerald Theme">
+      <p align="center"><sub><strong>Forest Emerald Theme</strong> — Custom palette extracted from imagery</sub></p>
     </td>
     <td width="50%">
-      <img src="assets/preview-bulk.jpg" alt="Select Mode & Floating Group Menu">
-      <p align="center"><sub><strong>Select Mode &amp; Groups</strong> — Bulk action bar with instant group tagging</sub></p>
+      <img src="assets/12.png" alt="FontShelf Search by Image">
+      <p align="center"><sub><strong>Search by Image</strong> — Drop or paste any image to find matching fonts offline</sub></p>
     </td>
   </tr>
 </table>
@@ -114,14 +101,9 @@ Pay once and own your studio forever: **no subscriptions, no accounts, and zero 
 - **OS:** Windows 10 (version 19041.0 or higher) & Windows 11
 - **Architecture:** 32-bit (`x86`) and 64-bit (`x64`)
 - **Offline Support:** All core features — including visual font search across local, folder, bundled, and indexed Google Fonts — work completely offline. Internet is only needed when browsing or downloading new Google Fonts.
-- **Privacy:** Zero accounts, zero analytics, zero telemetry, zero cloud uploads. Read the full [Privacy Policy](https://tellawy.github.io/FontShelf/privacy.html).
+- **Privacy:** Your fonts and images stay on your device. Zero accounts, zero tracking, zero uploads.
 
 ---
 
-## Links
-
-- **Microsoft Store:** https://apps.microsoft.com/detail/YOUR_STORE_ID_HERE *(update with live Store ID once published)*
-- **Landing Page:** https://tellawy.github.io/FontShelf/
-- **Privacy Policy:** https://tellawy.github.io/FontShelf/privacy.html
-- **More Apps by Mahmoud Tellawy:** https://apps.microsoft.com/search/publisher?name=Mahmoud+Tellawy
-- **Contact:** MTellawy@Gmail.com
+IN MICROSOFT STORE:
+https://apps.microsoft.com/detail/YOUR_STORE_ID_HERE
