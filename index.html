@@ -1,400 +1,208 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en" dir="ltr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FontShelf</title>
-  <meta name="description" content="Find any font. Organize every library. Work completely offline on Windows 10 & 11.">
-  <meta property="og:title" content="FontShelf">
-  <meta property="og:description" content="Find any font. Organize every library. Work completely offline on Windows 10 & 11.">
-  <meta property="og:image" content="assets/1.png">
-  <meta property="og:type" content="website">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="FontShelf — The fast, offline-first font studio for Windows 11. Browse local, folder, and 2,000+ Google Fonts, identify fonts from any image offline, and generate custom themes from any photo.">
+  <title>FontShelf — Find It. Preview It. Own It.</title>
   <link rel="icon" type="image/png" href="assets/FontShelfLogo.png">
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-
-    html, body {
-      width: 100%;
-      height: 100%;
-      background: #111113;
-      color: #fff;
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-    }
-
-    body {
-      min-height: 100dvh;
-      overflow: hidden;
-      user-select: none;
-      -webkit-user-select: none;
-    }
-
-    /* ---- Ambient Background (matching Pomotimer) ---- */
-    .bg { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
-    .bg-grid {
-      position: absolute;
-      inset: 0;
-      background-image: radial-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px);
-      background-size: 24px 24px;
-    }
-    .bg-blur {
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(ellipse 700px 500px at 22% 28%, rgba(0, 145, 255, 0.08) 0%, transparent 100%),
-        radial-gradient(ellipse 640px 520px at 78% 68%, rgba(224, 154, 70, 0.06) 0%, transparent 100%),
-        radial-gradient(ellipse 680px 420px at 50% 90%, rgba(67, 97, 238, 0.06) 0%, transparent 100%);
-    }
-
-    /* ---- Single-Screen Responsive Layout ---- */
-    .page {
-      position: relative;
-      z-index: 1;
-      width: 100%;
-      height: 100dvh;
-      padding: clamp(16px, 3vh, 32px) clamp(14px, 3vw, 28px);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: clamp(10px, 1.8vh, 18px);
-    }
-
-    .brand {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 6px;
-      flex-shrink: 0;
-    }
-    .logo {
-      width: clamp(36px, 4.5vh, 48px);
-      height: clamp(36px, 4.5vh, 48px);
-      object-fit: contain;
-    }
-    h1 {
-      font-weight: 300;
-      font-size: clamp(14px, 1.8vw, 18px);
-      color: #636366;
-      letter-spacing: 2.5px;
-      text-transform: uppercase;
-    }
-
-    /* ---- Auto Slider ---- */
-    .slider-wrap {
-      width: 100%;
-      max-width: min(92vw, 940px, calc((100dvh - 250px) * (1860 / 1119)));
-      min-height: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 10px;
-      flex-shrink: 1;
-    }
-
-    .slider-frame {
-      position: relative;
-      width: 100%;
-      aspect-ratio: 1860 / 1119;
-      border-radius: 14px;
-      overflow: hidden;
-      background: rgba(28, 28, 30, 0.9);
-      border: 1px solid rgba(255, 255, 255, 0.10);
-      box-shadow: 0 24px 64px rgba(0, 0, 0, 0.65), 0 6px 20px rgba(0, 0, 0, 0.4);
-    }
-
-    .slide-img {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      opacity: 0;
-      transition: opacity 0.65s ease;
-      pointer-events: none;
-    }
-    .slide-img.active {
-      opacity: 1;
-    }
-
-    .nav-btn {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 34px;
-      height: 34px;
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      border-radius: 50%;
-      background: rgba(20, 20, 24, 0.65);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      color: #e5e5ea;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      opacity: 0;
-      transition: opacity 0.2s ease, background 0.2s ease;
-      z-index: 3;
-    }
-    .slider-frame:hover .nav-btn,
-    .nav-btn:focus-visible {
-      opacity: 1;
-    }
-    .nav-btn:hover {
-      background: rgba(44, 44, 50, 0.92);
-      color: #fff;
-    }
-    .nav-btn.prev { left: 12px; }
-    .nav-btn.next { right: 12px; }
-    .nav-btn svg { width: 16px; height: 16px; }
-
-    .dots {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 7px;
-      flex-wrap: wrap;
-    }
-    .dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 999px;
-      border: 0;
-      padding: 0;
-      background: rgba(255, 255, 255, 0.18);
-      cursor: pointer;
-      transition: width 0.25s ease, background 0.25s ease;
-    }
-    .dot:hover {
-      background: rgba(255, 255, 255, 0.42);
-    }
-    .dot.active {
-      width: 20px;
-      background: #0091ff;
-    }
-
-    /* ---- CTA (matching Pomotimer) ---- */
-    .cta {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 11px 26px;
-      background: rgba(44, 44, 46, 0.95);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 20px;
-      color: #fff;
-      font-size: 14px;
-      font-weight: 400;
-      cursor: pointer;
-      text-decoration: none;
-      transition: background 0.2s ease, border-color 0.2s ease;
-      flex-shrink: 0;
-    }
-    .cta:hover {
-      background: rgba(55, 55, 58, 0.95);
-      border-color: rgba(255, 255, 255, 0.16);
-    }
-    .cta svg {
-      width: 16px;
-      height: 16px;
-      color: #0091ff;
-    }
-
-    /* ---- Footer (matching Pomotimer) ---- */
-    .footer {
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 7px;
-      flex-shrink: 0;
-    }
-    .footer-tagline {
-      font-size: 13px;
-      color: #636366;
-      letter-spacing: 0.5px;
-      font-style: italic;
-    }
-    .footer-madeby {
-      font-size: 12px;
-      color: #48484a;
-    }
-    .footer-links {
-      display: flex;
-      gap: 16px;
-      align-items: center;
-    }
-    .footer-links a {
-      color: #636366;
-      transition: color 0.2s ease;
-      display: flex;
-      align-items: center;
-      text-decoration: none;
-    }
-    .footer-links a svg { width: 20px; height: 20px; }
-    .footer-links a.pp:hover,
-    .footer-links a.fb:hover,
-    .footer-links a.ms:hover { color: #0091ff; }
-    .footer-links a.yt:hover { color: #ff0000; }
-
-    /* ---- Mobile & Short-Screen Tuning ---- */
-    @media (max-width: 640px) {
-      .slider-wrap {
-        max-width: 100%;
-      }
-      .slider-frame {
-        border-radius: 10px;
-      }
-      .nav-btn {
-        display: none;
-      }
-      .cta {
-        padding: 10px 22px;
-        font-size: 13.5px;
-      }
-    }
-    @media (max-height: 620px) {
-      .page { gap: 8px; padding: 12px 14px; }
-      .slider-wrap { max-width: min(92vw, calc((100dvh - 190px) * (1860 / 1119))); gap: 6px; }
-      .footer { gap: 4px; }
-    }
-  </style>
+  <link rel="stylesheet" href="./site.css">
+  <script type="module" src="./site.js"></script>
 </head>
-<body>
+<body data-initial-page="home">
+  <main class="app-shell" id="app-shell">
+    <header class="topbar">
+      <div class="brand-block">
+        <button class="icon-btn-bare mobile-nav-trigger" id="mobile-sidebar-toggle" type="button" aria-label="Navigation">
+          <i class="hgi-stroke hgi-sidebar-left svg-icon" aria-hidden="true"></i>
+        </button>
 
-  <div class="bg">
-    <div class="bg-grid"></div>
-    <div class="bg-blur"></div>
-  </div>
+        <div class="brand-copy">
+          <a class="brand-name" id="brand-name-link" href="index.html">FontShelf</a>
+          <span class="brand-sep">/</span>
+          <strong class="breadcrumb-current" id="breadcrumb-current">Home</strong>
+        </div>
 
-  <main class="page">
-    <div class="brand">
-      <img src="assets/FontShelfLogo.png" alt="FontShelf" class="logo">
-      <h1>FontShelf</h1>
+        <div class="status-cluster">
+          <div class="scan-status" aria-live="polite">
+            <span class="status-dot"></span>
+            <span>Windows 11</span>
+          </div>
+          <span class="topbar-notification" id="topbar-notification" role="status" aria-live="polite"></span>
+        </div>
+      </div>
+
+      <div class="top-actions">
+        <a class="topbar-store-link" href="https://apps.microsoft.com/detail/9MT69GPXZ0S9" target="_blank" rel="noopener" data-hint="Open FontShelf on Microsoft Store">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 3h8.5v8.5H3V3zm9.5 0H21v8.5h-8.5V3zM3 12.5h8.5V21H3v-8.5zm9.5 0H21V21h-8.5v-8.5z"/></svg>
+          <span>Microsoft Store</span>
+        </a>
+        <button class="icon-btn-bare mobile-inspector-trigger" id="mobile-inspector-toggle" type="button" aria-label="Context">
+          <i class="hgi-stroke hgi-sidebar-right svg-icon" aria-hidden="true"></i>
+        </button>
+      </div>
+    </header>
+
+    <div class="workspace" id="workspace">
+      <div class="drawer-backdrop" id="drawer-backdrop" hidden></div>
+
+      <div class="sidebar-column" id="sidebar-panel">
+        <aside class="sidebar panel" aria-label="Site navigation">
+          <div class="sidebar-scroll">
+            <div class="sidebar-scroll-inner">
+              <div class="sidebar-section">
+                <div class="section-heading">
+                  <span class="section-eyebrow">FontShelf</span>
+                  <button class="icon-btn-bare drawer-close-btn" id="sidebar-close" type="button" aria-label="Close">
+                    <i class="hgi-stroke hgi-cancel-01 svg-icon-sm" aria-hidden="true"></i>
+                  </button>
+                </div>
+                <a class="nav-item active" href="index.html" data-nav-page="home" aria-current="page">
+                  <i class="hgi-stroke hgi-dashboard-square-01 nav-svg" aria-hidden="true"></i>
+                  <span class="nav-label">Home</span>
+                </a>
+                <a class="nav-item" href="index.html#features" data-nav-page="features">
+                  <i class="hgi-stroke hgi-star nav-svg" aria-hidden="true"></i>
+                  <span class="nav-label">Features</span>
+                </a>
+                <a class="nav-item" href="download.html" data-nav-page="download">
+                  <i class="hgi-stroke hgi-download-04 nav-svg" aria-hidden="true"></i>
+                  <span class="nav-label">Download</span>
+                  <span class="nav-count">Win 11</span>
+                </a>
+                <a class="nav-item" href="index.html#faq" data-nav-page="faq">
+                  <i class="hgi-stroke hgi-tick-02 nav-svg" aria-hidden="true"></i>
+                  <span class="nav-label">FAQ</span>
+                  <span class="nav-count">10</span>
+                </a>
+              </div>
+
+              <div class="sidebar-section">
+                <div class="section-heading">
+                  <span class="section-eyebrow">Policies &amp; Safety</span>
+                </div>
+                <a class="nav-item" href="privacy.html" data-nav-page="privacy">
+                  <i class="hgi-stroke hgi-checkmark-circle-02 nav-svg" aria-hidden="true"></i>
+                  <span class="nav-label">Privacy Policy</span>
+                </a>
+                <a class="nav-item" href="support.html#font-access" data-nav-page="font-access">
+                  <i class="hgi-stroke hgi-folder-01 nav-svg" aria-hidden="true"></i>
+                  <span class="nav-label">Windows Font Access</span>
+                </a>
+                <a class="nav-item" href="support.html#safety" data-nav-page="safety">
+                  <i class="hgi-stroke hgi-tag-01 nav-svg" aria-hidden="true"></i>
+                  <span class="nav-label">Safety &amp; Validation</span>
+                </a>
+                <a class="nav-item" href="support.html#uninstall" data-nav-page="uninstall">
+                  <i class="hgi-stroke hgi-delete-02 nav-svg" aria-hidden="true"></i>
+                  <span class="nav-label">After Uninstall</span>
+                </a>
+              </div>
+
+              <div class="sidebar-section">
+                <div class="section-heading">
+                  <span class="section-eyebrow">Help</span>
+                </div>
+                <a class="nav-item" href="support.html" data-nav-page="support">
+                  <i class="hgi-stroke hgi-globe-02 nav-svg" aria-hidden="true"></i>
+                  <span class="nav-label">Support &amp; Contact</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </aside>
+
+        <section class="theme-panel panel" id="theme-panel" aria-label="Theme settings">
+          <input type="file" id="theme-image-input" accept="image/*" hidden>
+          <div class="theme-control">
+            <div class="bg-switch theme-switch" id="theme-switch" role="switch" aria-checked="false" aria-label="Toggle Dark or Light theme" tabindex="0" data-hint="Toggle Dark / Light theme">
+              <div class="bg-switch-rail" aria-hidden="true">
+                <span class="bg-switch-track-seg is-left"></span>
+                <span class="bg-switch-track-seg is-right"></span>
+              </div>
+              <div class="bg-switch-thumb"></div>
+            </div>
+            <button class="icon-btn-bare theme-palette-btn" id="theme-palette-button" type="button" aria-label="Create palette from image" data-hint="Create palette from image">
+              <i class="hgi-stroke hgi-add-01 svg-icon-sm" id="theme-palette-icon" aria-hidden="true"></i>
+            </button>
+          </div>
+        </section>
+      </div>
+
+      <div class="panel-resizer" id="resizer-left" role="separator" aria-orientation="vertical"></div>
+
+      <section class="library-panel panel" id="library-panel">
+        <div class="library-bar">
+          <div class="search-box" role="search">
+            <i class="hgi-stroke hgi-search-01 search-icon" aria-hidden="true"></i>
+            <input id="site-search" type="search" autocomplete="off" spellcheck="false" aria-label="Search">
+            <button class="icon-btn-bare search-clear-btn" id="search-clear-button" type="button" aria-label="Clear search" data-hint="Clear search" hidden>
+              <svg class="svg-icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M18 6L6 18M6 6l12 12"/></svg>
+            </button>
+          </div>
+
+          <button id="scroll-jump-button" class="view-button icon-btn-bare" type="button" aria-label="Scroll to bottom" data-scroll-dir="bottom" hidden>
+            <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path id="scroll-jump-icon-path" d="M12 5v14M18 13l-6 6-6-6"/>
+            </svg>
+          </button>
+        </div>
+
+        <div class="content-scroll" id="content-scroll">
+          <div class="content-stack" id="page-content">
+            <article class="web-card">
+              <h1 class="web-card-title">FontShelf — Find It. Preview It. Own It.</h1>
+              <p>FontShelf is a fast, offline-first font studio for Windows 11. Browse installed fonts, unlimited local folders, 39 offline bundled fonts, and 2,000+ Google Fonts—with offline visual font identification and dynamic image-extracted themes.</p>
+              <div class="hero-actions">
+                <a class="btn btn-primary" href="https://apps.microsoft.com/detail/9MT69GPXZ0S9" target="_blank" rel="noopener">Get on Microsoft Store</a>
+                <a class="btn" href="download.html">Download</a>
+                <a class="btn" href="privacy.html">Privacy Policy</a>
+                <a class="btn" href="support.html">Support</a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <div class="panel-resizer" id="resizer-right" role="separator" aria-orientation="vertical"></div>
+
+      <aside class="inspector-column" id="inspector-panel">
+        <section class="inspector panel" aria-label="Page context">
+          <div class="inspector-topline">
+            <span class="section-eyebrow">CONTEXT</span>
+            <button class="icon-btn-bare inspector-close" id="inspector-close" type="button" aria-label="Close">
+              <i class="hgi-stroke hgi-cancel-01 svg-icon-sm" aria-hidden="true"></i>
+            </button>
+          </div>
+          <div class="inspector-content">
+            <div class="inspector-content-inner" id="context-inner">
+              <div>
+                <span class="ctx-block-label">OVERVIEW</span>
+                <h2 class="ctx-title">FontShelf for Windows 11</h2>
+              </div>
+              <p class="ctx-lead">Offline-first native font studio. Store ID: 9MT69GPXZ0S9. Publisher: Mahmoud Tellawy (MTellawy@Gmail.com).</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="size-slider-panel panel" id="size-slider-panel" aria-label="Text size and zoom">
+          <label class="size-control" for="size-slider" data-hint="Adjust text size">
+            <span class="size-glyph">Aa</span>
+            <input id="size-slider" class="size-slider" type="range" min="12" max="22" step="0.5" value="14" aria-label="Text size">
+          </label>
+          <span class="size-panel-sep" aria-hidden="true"></span>
+          <div class="window-zoom-controls" aria-label="Interface zoom">
+            <button class="icon-btn-bare zoom-btn" id="zoom-out-button" type="button" aria-label="Zoom out" data-hint="Zoom out">
+              <i class="hgi-stroke hgi-minus-sign svg-icon-sm" aria-hidden="true"></i>
+            </button>
+            <button class="icon-btn-bare zoom-btn" id="zoom-in-button" type="button" aria-label="Zoom in" data-hint="Zoom in">
+              <i class="hgi-stroke hgi-add-01 svg-icon-sm" aria-hidden="true"></i>
+            </button>
+          </div>
+        </section>
+      </aside>
     </div>
-
-    <section class="slider-wrap" aria-label="FontShelf screenshots">
-      <div class="slider-frame" id="slider-frame">
-        <img class="slide-img active" src="assets/1.png" alt="FontShelf preview 1">
-        <img class="slide-img" src="assets/2.png" alt="FontShelf preview 2" loading="lazy">
-        <img class="slide-img" src="assets/3.png" alt="FontShelf preview 3" loading="lazy">
-        <img class="slide-img" src="assets/4.png" alt="FontShelf preview 4" loading="lazy">
-        <img class="slide-img" src="assets/5.png" alt="FontShelf preview 5" loading="lazy">
-        <img class="slide-img" src="assets/6.png" alt="FontShelf preview 6" loading="lazy">
-        <img class="slide-img" src="assets/7.png" alt="FontShelf preview 7" loading="lazy">
-        <img class="slide-img" src="assets/8.png" alt="FontShelf preview 8" loading="lazy">
-        <img class="slide-img" src="assets/9.png" alt="FontShelf preview 9" loading="lazy">
-        <img class="slide-img" src="assets/10.png" alt="FontShelf preview 10" loading="lazy">
-        <img class="slide-img" src="assets/11.png" alt="FontShelf preview 11" loading="lazy">
-        <img class="slide-img" src="assets/12.png" alt="FontShelf preview 12" loading="lazy">
-
-        <button class="nav-btn prev" id="prev-btn" type="button" aria-label="Previous screenshot">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
-        </button>
-        <button class="nav-btn next" id="next-btn" type="button" aria-label="Next screenshot">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
-        </button>
-      </div>
-
-      <div class="dots" id="slider-dots" role="tablist" aria-label="Choose screenshot"></div>
-    </section>
-
-    <!-- TODO: Replace YOUR_STORE_ID_HERE with your live Microsoft Store Product ID -->
-    <a href="https://apps.microsoft.com/detail/YOUR_STORE_ID_HERE" class="cta" target="_blank" rel="noopener">
-      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 3h8.5v8.5H3V3zm9.5 0H21v8.5h-8.5V3zM3 12.5h8.5V21H3v-8.5zm9.5 0H21V21h-8.5v-8.5z"/></svg>
-      Get FontShelf
-    </a>
-
-    <footer class="footer">
-      <div class="footer-tagline">Find It. Preview It. Own It.</div>
-      <div class="footer-madeby">Made by Mahmoud Tellawy</div>
-      <div class="footer-links">
-        <a class="pp" href="privacy.html" aria-label="Privacy Policy" title="Privacy Policy">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        </a>
-        <a class="ms" href="https://apps.microsoft.com/search/publisher?name=Mahmoud+Tellawy" target="_blank" rel="noopener" aria-label="More Apps on Microsoft Store" title="More Apps on Microsoft Store">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M3 3h8.5v8.5H3V3zm9.5 0H21v8.5h-8.5V3zM3 12.5h8.5V21H3v-8.5zm9.5 0H21V21h-8.5v-8.5z"/></svg>
-        </a>
-        <a class="fb" href="https://facebook.com/MahmoudTellawy" target="_blank" rel="noopener" aria-label="Facebook" title="Facebook">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><path d="M2.5 12c0-4.478 0-6.718 1.391-8.109S7.521 2.5 12 2.5c4.478 0 6.718 0 8.109 1.391S21.5 7.521 21.5 12c0 4.478 0 6.718-1.391 8.109S16.479 21.5 12 21.5c-4.478 0-6.718 0-8.109-1.391S2.5 16.479 2.5 12Z"/><path d="M16.927 8.026h-2.945a1.9 1.9 0 0 0-1.9 1.886l-.086 11.515m-1.914-7.425h4.803" stroke-linecap="round"/></svg>
-        </a>
-        <a class="yt" href="https://youtube.com/@MahmoudTellawy" target="_blank" rel="noopener" aria-label="YouTube" title="YouTube">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 20.5c1.81 0 3.545-.179 5.153-.507 2.01-.41 3.014-.614 3.93-1.792.917-1.179.917-2.532.917-5.238v-1.926c0-2.706 0-4.06-.917-5.238-.916-1.178-1.92-1.383-3.93-1.792A26 26 0 0 0 12 3.5c-1.81 0-3.545.179-5.153.507-2.01.41-3.014.614-3.93 1.792C2 6.978 2 8.331 2 11.037v1.926c0 2.706 0 4.06.917 5.238.916 1.178 1.92 1.383 3.93 1.792 1.608.328 3.343.507 5.153.507Z"/><path d="M15.962 12.313c-.148.606-.938 1.04-2.517 1.911-1.718.947-2.577 1.42-3.272 1.237a1.7 1.7 0 0 1-.635-.317C9 14.709 9 13.806 9 12s0-2.709.538-3.144c.182-.147.4-.256.635-.317.695-.183 1.554.29 3.272 1.237 1.58.87 2.369 1.305 2.517 1.911.05.206.05.42 0 .626Z" stroke-linejoin="round"/></svg>
-        </a>
-      </div>
-    </footer>
   </main>
-
-  <script>
-    (function () {
-      var slides = Array.prototype.slice.call(document.querySelectorAll('.slide-img'));
-      var dotsWrap = document.getElementById('slider-dots');
-      var frame = document.getElementById('slider-frame');
-      var prevBtn = document.getElementById('prev-btn');
-      var nextBtn = document.getElementById('next-btn');
-      var current = 0;
-      var timer = null;
-      var touchStartX = null;
-
-      var dots = slides.map(function (_, i) {
-        var b = document.createElement('button');
-        b.type = 'button';
-        b.className = 'dot' + (i === 0 ? ' active' : '');
-        b.setAttribute('aria-label', 'Slide ' + (i + 1));
-        b.addEventListener('click', function () { goTo(i); restart(); });
-        dotsWrap.appendChild(b);
-        return b;
-      });
-
-      function goTo(index) {
-        slides[current].classList.remove('active');
-        dots[current].classList.remove('active');
-        current = (index + slides.length) % slides.length;
-        slides[current].classList.add('active');
-        dots[current].classList.add('active');
-      }
-
-      function start() {
-        stop();
-        timer = setInterval(function () { goTo(current + 1); }, 3200);
-      }
-
-      function stop() {
-        if (timer) { clearInterval(timer); timer = null; }
-      }
-
-      function restart() {
-        start();
-      }
-
-      prevBtn.addEventListener('click', function () { goTo(current - 1); restart(); });
-      nextBtn.addEventListener('click', function () { goTo(current + 1); restart(); });
-
-      frame.addEventListener('mouseenter', stop);
-      frame.addEventListener('mouseleave', start);
-
-      frame.addEventListener('touchstart', function (e) {
-        touchStartX = e.touches[0].clientX;
-        stop();
-      }, { passive: true });
-      frame.addEventListener('touchend', function (e) {
-        if (touchStartX !== null) {
-          var dx = e.changedTouches[0].clientX - touchStartX;
-          if (Math.abs(dx) > 36) goTo(current + (dx < 0 ? 1 : -1));
-          touchStartX = null;
-        }
-        start();
-      }, { passive: true });
-
-      document.addEventListener('keydown', function (e) {
-        if (e.key === 'ArrowRight') { goTo(current + 1); restart(); }
-        else if (e.key === 'ArrowLeft') { goTo(current - 1); restart(); }
-      });
-
-      start();
-    })();
-  </script>
 </body>
 </html>

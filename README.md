@@ -12,7 +12,7 @@
 
 ## Overview
 
-**FontShelf** brings every typeface you work with into one clean, native Windows workspace — installed system fonts, unlimited local folders, curated offline bundled fonts, and over 2,000 Google Fonts — with **offline visual font identification**, **image-extracted custom themes**, and **13+ language previews**.
+**FontShelf** (`v1.0.0`) brings every typeface you work with into one clean, native **Windows 11 (`x64`)** workspace — installed system fonts, per-user fonts, unlimited local folders, 39 curated offline bundled fonts, and over 2,000 Google Fonts — with **offline visual font identification**, **image-extracted custom themes**, and **13+ language previews**.
 
 Pay once and own your studio forever: **no subscriptions, no accounts, and zero tracking.**
 
@@ -23,17 +23,18 @@ Pay once and own your studio forever: **no subscriptions, no accounts, and zero 
 ### 1. Offline Visual Font Search (Search by Image)
 - **Paste or Drop Any Image** — Press `Ctrl+V`, drag-and-drop, or pick any screenshot, poster, or logo.
 - **Interactive Crop & Auto-Level** — Draw a tight selection around any line of lettering and automatically straighten tilted text before matching.
-- **100% On-Device Neural Matching** — Ranks visually similar fonts with accuracy percentages completely offline across **Local fonts**, **Watched Folders**, **Bundled fonts**, and **2,000+ pre-indexed Google Fonts**.
+- **100% On-Device Cross-Language Matching** — Ranks the Top-10 visually similar fonts across all supported scripts completely offline across **Local fonts**, **Watched Folders**, **Bundled fonts**, and **2,000+ pre-indexed Google Fonts**.
 - **Source Switching & Live Re-Scoring** — Switch match sources on the fly, add optional text or language hints, and preview custom text live across matched results.
 
 ### 2. Dynamic Themes From Any Image
-- **Extract Palettes Automatically** — Drop any photo or brand artwork to theme the entire app in harmonious, accessible **Dark** or **Light** color schemes.
+- **Extract Palettes Automatically** — Drop any photo or brand artwork onto the bottom-left theme panel (or click `+`) to theme the entire app in harmonious, contrast-safe **Dark** or **Light** color schemes.
 - **Classic Defaults Anytime** — Toggle seamlessly between Obsidian Dark, Daylight Light, and your extracted custom palette with one-click reset.
 
-### 3. Unified Font Library & Built-In Google Fonts
-- **All Sources Together** — Manage Windows system fonts, per-user installed fonts, unlimited local folders (without installing them to Windows), and **39 offline bundled fonts** (*Poppins*, *Noto Sans*, *Al-Jazeera*).
-- **2,000+ Google Fonts Built In** — Preview live Google Fonts directly inside FontShelf and favorite, organize into groups, copy, or install straight to Windows in a single click — no browser downloads or ZIP extraction.
-- **Safe Soft-Remove & Restore** — Removed fonts move safely to a dedicated **Removed** tab (with originals sent to the Windows Recycle Bin) so you can restore or permanently clean up on your terms.
+### 3. Unified Font Library, Built-In Google Fonts & Safe Per-User Management
+- **All Sources Together** — Manage per-user **Installed** fonts, read-only Windows **System** fonts (in their own dedicated tab), a smart **Recent** activity tab (up to 100 entries), unlimited local folders (without installing them to Windows), and the **FontShelf** tab uniting **39 offline bundled fonts** (*Poppins*, *Noto Sans*, *Al-Jazeera*) alongside every font installed via FontShelf.
+- **2,000+ Google Fonts Built In** — Open the **Google** tab to preview live fonts directly inside FontShelf and favorite, organize into groups, copy, or install straight to your Windows account in one click — no browser downloads or ZIP extraction.
+- **Uninstall All FontShelf Fonts & Safe Restore** — FontShelf tracks every font it installs. Click the uninstall-all icon next to `+` in the **FontShelf** tab and complete the 2-step confirmation in the right panel to cleanly uninstall exclusively FontShelf-installed fonts (originals go to the Windows Recycle Bin and stay restorable from the **Removed** tab).
+- **In-App Windows Font Access & Uninstall Info** — Click the shield-alert button next to the right-panel `Aa` slider anytime to view per-user paths, copy them, or review Windows Settings uninstall steps right inside the side panel.
 
 ### 4. Multilingual Preview Engine (13+ Languages & RTL)
 - **Automatic Script Detection** — Native samples across English, Arabic (RTL), French, German, Spanish, Greek, Russian, Hebrew (RTL), Hindi, Thai, Japanese, Korean, and Simplified Chinese.
@@ -98,12 +99,19 @@ Pay once and own your studio forever: **no subscriptions, no accounts, and zero 
 
 ## System Requirements & Privacy
 
-- **OS:** Windows 10 (version 19041.0 or higher) & Windows 11
-- **Architecture:** 32-bit (`x86`) and 64-bit (`x64`)
+- **OS:** Windows 11 (version 10.0.22000.0 or higher)
+- **Architecture:** 64-bit (`x64`)
 - **Offline Support:** All core features — including visual font search across local, folder, bundled, and indexed Google Fonts — work completely offline. Internet is only needed when browsing or downloading new Google Fonts.
 - **Privacy:** Your fonts and images stay on your device. Zero accounts, zero tracking, zero uploads.
+- **Windows Font Safety:** Uses Windows 11 MSIX Flexible Virtualization strictly scoped to `%LOCALAPPDATA%\Microsoft\Windows\Fonts` and `HKCU\Software\Microsoft\Windows NT\CurrentVersion\Fonts`. Windows system fonts (`%WINDIR%\Fonts` / `HKLM`) are strictly read-only, non-FontShelf fonts are protected by explicit confirmation prompts, and FontShelf includes one-click removal of all FontShelf-installed fonts.
 
 ---
 
-IN MICROSOFT STORE:
-https://apps.microsoft.com/detail/YOUR_STORE_ID_HERE
+## Official Links
+
+- **Microsoft Store:** https://apps.microsoft.com/detail/9MT69GPXZ0S9
+- **Website:** https://tellawy.github.io/FontShelf/
+- **Download:** https://tellawy.github.io/FontShelf/download.html
+- **Privacy Policy:** https://tellawy.github.io/FontShelf/privacy.html
+- **Support & Technical Disclosure:** https://tellawy.github.io/FontShelf/support.html
+- **Contact:** MTellawy@Gmail.com
