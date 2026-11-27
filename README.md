@@ -114,4 +114,3 @@ Pay once and own your studio forever: **no subscriptions, no accounts, and zero 
 - **Download:** https://tellawy.github.io/FontShelf/download.html
 - **Privacy Policy:** https://tellawy.github.io/FontShelf/privacy.html
 - **Support & Technical Disclosure:** https://tellawy.github.io/FontShelf/support.html
-- **Contact:** MTellawy@Gmail.com
