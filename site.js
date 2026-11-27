@@ -52,6 +52,299 @@ const SLIDES = [
   { src: 'assets/12.png', caption: 'Offline Search by Image — Crop and auto-level tilted lettering 100% locally on device' }
 ];
 
+const FEATURE_ITEMS = [
+  {
+    id: 'feat-01-visual-search',
+    num: '01',
+    category: 'Visual Search',
+    icon: 'hgi-image-02',
+    shortTitle: 'Offline Visual Search',
+    title: 'Offline Visual Search (Search by Image)',
+    summary: 'Identify fonts from any screenshot, poster, or logo 100% locally with built-in interactive crop and auto-level.',
+    details: [
+      'Paste from clipboard (<code>Ctrl+V</code>), drag-and-drop, or browse for any image directly inside the workspace.',
+      'Draw a tight crop selection around target lettering and auto-level tilted or skewed lines before scoring.',
+      'Runs completely on-device—your screenshots and client artwork never leave your Windows 11 PC.'
+    ],
+    tags: ['100% Offline', 'Interactive Crop', 'Auto-Level'],
+    searchText: 'offline visual search image identify fonts crop auto-level paste ctrl+v screenshot poster logo local on-device'
+  },
+  {
+    id: 'feat-02-cross-source-matching',
+    num: '02',
+    category: 'Visual Search',
+    icon: 'hgi-search-01',
+    shortTitle: 'Cross-Source Matching',
+    title: 'Cross-Source Visual Matching & Live Re-Scoring',
+    summary: 'Match images across Installed local fonts, Watched Folders, 39 offline bundled fonts, and 2,000+ pre-indexed Google Fonts.',
+    details: [
+      'Ranks the Top-10 closest matches globally across all supported scripts with clear similarity percentages.',
+      'Switch match sources on the fly (Local, Google, Folders, or All Sources) and narrow by optional script language or known text.',
+      'Type live sample text in the Details panel to re-score matched results dynamically against the exact phrase you need.'
+    ],
+    tags: ['Top-10 Ranking', '2,000+ Indexed Google Fonts', 'Live Re-Scoring'],
+    searchText: 'cross-source matching local folder bundled google fonts top 10 similarity percentage re-score matches tab'
+  },
+  {
+    id: 'feat-03-dynamic-themes',
+    num: '03',
+    category: 'Themes',
+    icon: 'hgi-star',
+    shortTitle: 'Dynamic Image Themes',
+    title: 'Dynamic Image-Extracted Themes',
+    summary: 'Drop any photo, poster, or brand artwork onto the bottom-left theme bar to generate balanced Dark and Light palettes.',
+    details: [
+      'Extracts up to 7 harmonious colors and maps contrast-safe backgrounds, panels, cards, borders, and accents automatically.',
+      'Toggle seamlessly between Dark and Light modes using the same extracted palette, or reset back to classic Obsidian Dark / Daylight Light in one click.',
+      'Try it live right here on this page with the bottom-left switch and <strong>+</strong> button.'
+    ],
+    tags: ['Dark & Light Adaptive', 'Contrast-Safe', 'One-Click Reset'],
+    searchText: 'dynamic image themes palette extractor dark light mode drop photo brand artwork custom theme reset'
+  },
+  {
+    id: 'feat-04-google-fonts',
+    num: '04',
+    category: 'Library',
+    icon: 'hgi-globe-02',
+    shortTitle: 'Google Fonts Built In',
+    title: '2,000+ Google Fonts Built In',
+    summary: 'Browse, search, and live-preview over 2,000 Google Fonts inside FontShelf and install directly to Windows in one click.',
+    details: [
+      'Open the dedicated <strong>Google</strong> tab to preview real font weights and scripts without visiting a browser or extracting ZIP archives.',
+      'Favorite Google Fonts, assign them to custom groups, copy font files, or install straight to your Windows user account in one click.',
+      'Already pre-indexed offline for Search by Image—internet is only used when browsing live previews or downloading new Google Fonts.'
+    ],
+    tags: ['2,000+ Families', 'One-Click Install', 'No Browser Needed'],
+    searchText: 'google fonts 2000 built in preview online install windows one click zip no browser'
+  },
+  {
+    id: 'feat-05-unified-shelf',
+    num: '05',
+    category: 'Library',
+    icon: 'hgi-dashboard-square-01',
+    shortTitle: 'Unified Font Shelf',
+    title: 'Unified Font Shelf & Organized Smart Tabs',
+    summary: 'Every typeface source united in one clean sidebar—All fonts, Recent, Favorites, Installed, System, Google, Removed, FontShelf, and Matches.',
+    details: [
+      'Dedicated <strong>Installed</strong> tab for manageable per-user Windows fonts and a separate read-only <strong>System</strong> tab for protected Windows system fonts.',
+      'Instant live counts on every tab, folder, custom group, and detected language.',
+      'Clear row badges show exact status—Installed, System, FontShelf, or the actual name of the added folder.'
+    ],
+    tags: ['All Sources Together', 'Read-Only System Tab', 'Live Counts'],
+    searchText: 'unified font shelf system user folder bundled tabs all fonts installed system google removed matches'
+  },
+  {
+    id: 'feat-06-local-folders',
+    num: '06',
+    category: 'Library',
+    icon: 'hgi-folder-01',
+    shortTitle: 'Unlimited Local Folders',
+    title: 'Unlimited Local Folders & Archive Support',
+    summary: 'Organize and preview unlimited external font folders or compressed archives without installing unused fonts to Windows.',
+    details: [
+      'Add client libraries, design archives, or project folders—FontShelf scans them smoothly without bloating your Windows Fonts registry.',
+      'Supports direct installation or import from folders and compressed archives (<code>.zip</code>, <code>.rar</code>, <code>.7z</code>, <code>.tar</code>, and more).',
+      'Copy fonts into any added folder, open their exact file location in Windows Explorer, or delete folder files safely to the Recycle Bin.'
+    ],
+    tags: ['Zero Windows Clutter', 'Archive Import', 'Explorer Reveal'],
+    searchText: 'local folders support unlimited folder archive zip rar 7z clutter windows explorer delete from folder'
+  },
+  {
+    id: 'feat-07-fontshelf-tab',
+    num: '07',
+    category: 'Library',
+    icon: 'hgi-download-04',
+    shortTitle: 'FontShelf Tab & 39 Built-In Fonts',
+    title: 'Dedicated FontShelf Tab & 39 Offline Built-In Fonts',
+    summary: 'Includes 39 curated offline fonts ready out of the box alongside every font installed via FontShelf and one-click uninstall-all.',
+    details: [
+      'Ships with full families of <strong>Al-Jazeera</strong>, <strong>Noto Sans</strong>, and <strong>Poppins</strong> (39 faces total) ready to preview, copy, or install immediately offline.',
+      'Tracks every per-user font you install through FontShelf and lists them together in the <strong>FontShelf</strong> tab (while keeping them in <strong>Installed</strong> too).',
+      'Click the dedicated uninstall-all icon next to <strong>+</strong> in the <strong>FontShelf</strong> tab to cleanly uninstall exclusively FontShelf-installed fonts.'
+    ],
+    tags: ['39 Offline Fonts', 'Install Ledger', '1-Click Uninstall All'],
+    searchText: 'fontshelf tab 39 bundled built-in poppins noto sans al-jazeera installed ledger uninstall all'
+  },
+  {
+    id: 'feat-08-recent-tab',
+    num: '08',
+    category: 'Library',
+    icon: 'hgi-tick-02',
+    shortTitle: 'Smart Recent Activity Tab',
+    title: 'Smart Recent Activity Tab (Up to 100 Fonts)',
+    summary: 'Automatically tracks your latest 100 previewed, selected, copied, favorited, or installed fonts so active project fonts stay close.',
+    details: [
+      'Maintains a rolling 100-font FIFO history persisted across sessions—the newest interactions automatically replace the oldest.',
+      'Browsing inside <strong>Recent</strong> keeps the list order stable while you click through candidates.',
+      'Combines seamlessly with Folders, Custom Groups, Favorites, and Languages via <code>Ctrl+Click</code>.'
+    ],
+    tags: ['Up to 100 Recent', 'Auto-Maintained', 'Session Persisted'],
+    searchText: 'recent tab history activity 100 fifo previewed selected copied favorited installed'
+  },
+  {
+    id: 'feat-09-multilingual-rtl',
+    num: '09',
+    category: 'Typography',
+    icon: 'hgi-globe-02',
+    shortTitle: 'Multilingual & RTL Engine',
+    title: 'Multilingual & RTL Specimen Engine (13+ Languages)',
+    summary: 'Automatic script detection and native specimen sentences across Latin, Arabic, Hebrew, Cyrillic, Greek, Indic, Thai, and CJK.',
+    details: [
+      'Supports <strong>13+ languages</strong>: English, Arabic (RTL), French, German, Spanish, Greek, Russian, Hebrew (RTL), Hindi, Thai, Japanese, Korean, and Simplified Chinese.',
+      'Automatically switches text direction (RTL/LTR) and picks matching native specimens in both the font list and the Details panel.',
+      'Click any language in the sidebar to filter supporting fonts and preview your library in that language instantly.'
+    ],
+    tags: ['13+ Languages', 'Native Arabic & Hebrew RTL', 'Auto Script Detection'],
+    searchText: 'multilingual rtl arabic hebrew english french german spanish greek russian hindi thai japanese korean chinese cjk'
+  },
+  {
+    id: 'feat-10-live-sample-editor',
+    num: '10',
+    category: 'Typography',
+    icon: 'hgi-copy-01',
+    shortTitle: 'Live Sample Editor & Peek',
+    title: 'Live Inline Sample Editor, Size Slider & Row Peek',
+    summary: 'Preview any custom headline on one font or across your entire library, resize samples smoothly, and peek long overflowing text.',
+    details: [
+      'Edit preview text directly in the right Details panel and apply it to <strong>This font</strong>, <strong>All fonts</strong>, or <strong>Reset</strong> back to language defaults in one click.',
+      'Adjust preview text size smoothly with the bottom-right <code>Aa</code> slider and zoom the entire interface (<code>Ctrl +</code> / <code>Ctrl -</code>) from 100% to 200%.',
+      'Drag the bottom edge of any overflowing list row downward to peek at the full multi-line sample without leaving your scroll position.'
+    ],
+    tags: ['Single or Global Sample', 'Aa Size Slider', 'Drag-to-Peek Rows'],
+    searchText: 'live sample editor custom text preview size slider aa zoom overflow peek drag row'
+  },
+  {
+    id: 'feat-11-layouts-grouping',
+    num: '11',
+    category: 'Workflow',
+    icon: 'hgi-layer',
+    shortTitle: 'List, Grid & Family Grouping',
+    title: 'List & Grid Layouts with Smart Family Grouping',
+    summary: 'Switch between detailed List rows and dense Grid cards, with inline family collapse/expand and resizable panels.',
+    details: [
+      'Toggle <strong>Family Grouping</strong> to collapse multi-weight families (e.g., 18 styles) into one clean row and expand all styles inline on click.',
+      'Single-style fonts automatically stay as direct single font rows without unnecessary expand controls.',
+      'Drag subtle splitters to customize sidebar and Details widths to suit wide monitors or compact split-screen windows.'
+    ],
+    tags: ['List & Grid Views', 'Smart Family Grouping', 'Resizable Panels'],
+    searchText: 'list grid view layout family grouping expand collapse styles single style resizable panels'
+  },
+  {
+    id: 'feat-12-multi-filters',
+    num: '12',
+    category: 'Workflow',
+    icon: 'hgi-tag-01',
+    shortTitle: 'Combinable Multi-Filters',
+    title: 'Combinable Multi-Filters & Instant Search',
+    summary: 'Hold Ctrl+Click to intersect scopes, folders, custom groups, favorites, and languages—paired with instant multi-field search.',
+    details: [
+      'Combine any Library scope with added Folders, Custom Groups, Favorites, or Languages (e.g., <strong>Installed</strong> + a specific folder shows only installed fonts inside that folder).',
+      'Press <code>Ctrl+K</code> anytime to search instantly by family name, style, language, script, category, or folder.',
+      'Organize custom project collections with unlimited user-defined <strong>Groups</strong> (create, inline rename, assign via floating picker, or delete without touching font files).'
+    ],
+    tags: ['True Intersection Filters', 'Instant Search (Ctrl+K)', 'Custom Groups'],
+    searchText: 'combinable multi-filters ctrl+click intersection scopes folders groups favorites languages search ctrl+k'
+  },
+  {
+    id: 'feat-13-bulk-drag-drop',
+    num: '13',
+    category: 'Workflow',
+    icon: 'hgi-tick-02',
+    shortTitle: 'Bulk Select & Drag-and-Drop',
+    title: 'Multi-Select Bulk Actions & Sidebar Drag-and-Drop',
+    summary: 'Select dozens of fonts with Shift+Click or Select Mode to batch favorite, group, copy, install, remove, or restore.',
+    details: [
+      'Toggle <strong>Select Mode</strong> (or use <code>Ctrl+Click</code> / <code>Shift+Click</code>) with a smart 3-stage Select All button and context-aware bulk actions.',
+      'Copy actual font files to clipboard (ready to paste in Explorer/Slack/Email) or copy clean font family names in one click.',
+      'Drag single or multiple font rows directly onto sidebar <strong>Favorites</strong>, <strong>Installed</strong>, <strong>Removed</strong>, <strong>Folders</strong>, or <strong>Groups</strong>.'
+    ],
+    tags: ['Select Mode', 'Copy Files or Names', 'Drag-and-Drop'],
+    searchText: 'bulk select actions shift+click ctrl+click batch favorite group install copy files names drag drop'
+  },
+  {
+    id: 'feat-14-context-keycaps',
+    num: '14',
+    category: 'Workflow',
+    icon: 'hgi-laptop-check',
+    shortTitle: 'Context Menus & Keycap Hints',
+    title: 'Concise Context Menus & Keycap Top-Bar Hints',
+    summary: 'Every panel, font row, folder, group, and specimen offers fast right-click menus and clean top-bar hints with shortcut keycaps.',
+    details: [
+      'Short, scannable right-click menus across font rows, empty list areas, sidebar sections, Details specimens, theme bar, and top bar.',
+      'Hovering any button, icon, or menu action displays a complete, unambiguous explanation in the top bar—with crisp keycap pills for keyboard shortcuts.',
+      'Full keyboard navigation with <code>Arrow Up</code> / <code>Arrow Down</code>, <code>Ctrl+K</code>, <code>F11</code>, and <code>Escape</code>.'
+    ],
+    tags: ['Right-Click Menus', 'Keycap Shortcuts', 'Keyboard Navigation'],
+    searchText: 'context menu right click hover hints top bar keycap shortcuts keyboard navigation arrows'
+  },
+  {
+    id: 'feat-15-safe-remove-restore',
+    num: '15',
+    category: 'Safety & Speed',
+    icon: 'hgi-waste-restore',
+    shortTitle: 'Safe Remove & Restore',
+    title: 'Safe Remove, Recycle Bin & One-Click Restore',
+    summary: 'Uninstalling or deleting fonts sends originals to the Windows Recycle Bin while staging restore copies in the Removed tab.',
+    details: [
+      'Clearly separates <strong>Uninstall font</strong> (removes from Windows) and <strong>Delete font from its folder</strong> (deletes only the external folder copy)—and shows both icons when a font exists in both places.',
+      'Restore any font back to Windows or its original folder in one click from the <strong>Removed</strong> tab.',
+      'Permanently delete staged restore copies anytime with clean inline confirmation in the right panel—zero disruptive pop-up dialogs.'
+    ],
+    tags: ['Windows Recycle Bin', 'One-Click Restore', 'Zero Pop-Ups'],
+    searchText: 'safe remove restore recycle bin removed tab uninstall delete from folder permanent delete'
+  },
+  {
+    id: 'feat-16-win11-safety',
+    num: '16',
+    category: 'Safety & Speed',
+    icon: 'hgi-checkmark-circle-02',
+    shortTitle: 'Windows 11 Font Safety',
+    title: '6-Stage Validation, Scoped Virtualization & Rollback',
+    summary: 'Built specifically for Windows 11 MSIX Flexible Virtualization with strict file validation, conflict guards, and locked-file rollback.',
+    details: [
+      'Validates every <code>.ttf</code>, <code>.otf</code>, <code>.ttc</code>, and <code>.otc</code> through 6 checks (symlink rejection, 50 MB gate, SFNT/TTC magic bytes, full <code>ttf-parser</code> inspection, path boundary, SHA-256 digest).',
+      'Writes strictly to <code>%LOCALAPPDATA%\\Microsoft\\Windows\\Fonts</code> and <code>HKCU\\...\\Fonts</code>—never touching <code>%WINDIR%\\Fonts</code> or <code>HKLM</code>.',
+      'Explicit right-panel warnings protect external non-FontShelf fonts and conflicting registrations, and transactional rollback keeps Windows clean if another app locks a font.'
+    ],
+    tags: ['6-Stage Validation', 'Clean Rollback', 'Scoped HKCU Only'],
+    searchText: 'windows 11 safety validation ttf otf ttc otc msix virtualization hkcu conflict rollback locked in-use'
+  },
+  {
+    id: 'feat-17-native-performance',
+    num: '17',
+    category: 'Safety & Speed',
+    icon: 'hgi-laptop-check',
+    shortTitle: 'Fast & Instant Resume',
+    title: 'Native Rust Speed, Virtual Scrolling & Session Resume',
+    summary: 'Smooth virtualized rendering over thousands of fonts with low memory usage and automatic full-session restoration.',
+    details: [
+      'Rust backend + WebView2 UI with virtualized list/grid rendering, cold specimen preview caching, and background memory trimming when idle.',
+      'UI interactions always take priority over background visual-search indexing so scrolling and typing stay responsive.',
+      'Automatically restores window geometry, panel widths, active tabs, filters, view mode, zoom level, and scroll positions every time you reopen FontShelf.'
+    ],
+    tags: ['Rust + WebView2', 'Virtualized Scrolling', 'Instant Session Resume'],
+    searchText: 'fast performance native rust webview2 virtual scrolling low memory instant session resume'
+  },
+  {
+    id: 'feat-18-own-it-forever',
+    num: '18',
+    category: 'Safety & Speed',
+    icon: 'hgi-star',
+    shortTitle: 'Own It Forever',
+    title: 'One-Time Purchase, Zero Tracking, Own It Forever',
+    summary: 'Commercial Windows 11 studio software you buy once on the Microsoft Store—no subscriptions, no accounts, and zero telemetry.',
+    details: [
+      'No monthly fees, no cloud lock-in, no sign-in walls, and no analytics or ad SDKs anywhere in the app.',
+      'All core capabilities—including visual font identification across 2,000+ pre-indexed Google Fonts—work 100% offline.',
+      'Clean MSIX lifecycle: uninstalling FontShelf lets Windows automatically delete all app settings and caches while leaving your installed fonts intact for existing projects.'
+    ],
+    tags: ['One-Time Purchase', 'Zero Subscriptions', 'Zero Tracking'],
+    searchText: 'own it forever one-time purchase microsoft store no subscriptions no accounts zero tracking privacy'
+  }
+];
+
+const FEATURE_CATEGORIES = ['All', 'Visual Search', 'Themes', 'Library', 'Typography', 'Workflow', 'Safety & Speed'];
+
 const FAQ_ITEMS = [
   {
     id: 'faq-pricing',
@@ -240,107 +533,31 @@ const PAGES = {
     title: 'Features',
     breadcrumb: 'Features',
     route: 'index.html#features',
-    documentTitle: 'FontShelf — Features & Shortcuts',
+    documentTitle: 'FontShelf — 18 Key Features & Shortcuts',
     context: {
       eyebrow: 'CAPABILITIES',
-      title: 'Full Studio Feature Set',
-      lead: 'Offline visual font search, dynamic image themes, 2,000+ Google Fonts, and 13+ languages in a native Windows 11 shell.',
+      title: '18 Studio Features Built for Windows 11',
+      lead: 'Explore every feature included in FontShelf—offline visual search, dynamic image themes, 2,000+ Google Fonts, 13+ languages, smart tabs, and scoped Windows 11 font safety.',
       chips: [
-        { label: 'Visual Search', cls: 'is-accent' },
+        { label: '18 Key Features', cls: 'is-accent' },
         { label: '2,000+ Google Fonts', cls: 'is-green' },
         { label: '13+ Languages', cls: '' }
       ],
       facts: [
         { k: 'Supported Formats', v: '.ttf, .otf, .ttc, .otc' },
-        { k: 'Bundled Fonts', v: '39 offline fonts ready out of the box' },
-        { k: 'Layouts', v: 'List View, Grid View & Family Grouping' }
+        { k: 'Built-In Offline Fonts', v: '39 faces (Al-Jazeera, Noto Sans, Poppins)' },
+        { k: 'Layouts & Views', v: 'List View, Grid View & Smart Family Grouping' }
       ],
       primaryAction: { label: 'Get on Microsoft Store', href: STORE_URL, external: true }
     },
     cards: [
       {
-        id: 'feat-visual-search',
-        icon: 'hgi-image-02',
-        shortTitle: 'Offline Visual Search',
-        title: 'Offline Visual Font Search (Search by Image)',
-        summary: 'Paste or drop any screenshot, crop & auto-level tilted text, and identify matching fonts 100% locally.',
-        searchText: 'offline visual font search image paste ctrl+v crop auto-level neural matching cross-language top 10 local folders google fonts',
-        html: `
-          <ul class="web-list">
-            <li><strong>Paste or Drop Any Image:</strong> Press <code>Ctrl+V</code>, drag-and-drop, or pick any poster, logo, or screenshot.</li>
-            <li><strong>Interactive Crop &amp; Auto-Level:</strong> Select a tight bounding box around lettering and straighten tilted lines before scoring.</li>
-            <li><strong>100% On-Device Ranking:</strong> Computes similarity percentages completely offline across Installed fonts, Watched Folders, Bundled fonts, and 2,000+ pre-indexed Google Fonts.</li>
-            <li><strong>Global Cross-Language Ranking:</strong> Automatically surfaces the top 10 matches across all supported scripts unless a specific language filter is selected.</li>
-          </ul>
-        `
-      },
-      {
-        id: 'feat-themes',
-        icon: 'hgi-star',
-        shortTitle: 'Dynamic Image Themes',
-        title: 'Dynamic Image-Extracted Themes',
-        summary: 'Generate harmonious, contrast-safe Dark and Light workspace palettes from any photo or brand artwork.',
-        searchText: 'dynamic themes image palette extractor dark light mode contrast safe custom theme reset drag drop',
-        html: `
-          <p>Drop any image onto the bottom-left theme panel (or click the <strong>+</strong> icon) to extract up to 7 balanced colors and adapt every surface, border, and accent across both Dark and Light modes.</p>
-          <p>Try it right here on this page using the bottom-left theme controls—it runs FontShelf's exact <code>theme-palette.js</code> color engine with one-click reset back to default Dark or Light.</p>
-        `
-      },
-      {
-        id: 'feat-library',
-        icon: 'hgi-globe-02',
-        shortTitle: 'Unified Library & Google Fonts',
-        title: 'Unified Library, Folders & 2,000+ Google Fonts',
-        summary: 'Browse Windows fonts, external folders, offline bundled fonts, and Google Fonts together without clutter.',
-        searchText: 'unified library folders google fonts 2000 bundled poppins noto sans al-jazeera install one click soft remove restore',
-        html: `
-          <ul class="web-list">
-            <li><strong>Unlimited Watched Folders &amp; Smart Tabs:</strong> Preview archives and project folders locally without installing unused fonts to Windows, browse read-only Windows fonts in the dedicated <strong>System</strong> tab, and revisit up to 100 recently used fonts in <strong>Recent</strong>.</li>
-            <li><strong>2,000+ Google Fonts Built In:</strong> Open the <strong>Google</strong> tab to search, preview live, favorite, group, or install Google Fonts straight to your Windows account in one click.</li>
-            <li><strong>FontShelf Tab &amp; 39 Built-In Fonts:</strong> Unites 39 curated offline fonts (Poppins, Noto Sans, Al-Jazeera) with every font installed via FontShelf, plus a dedicated one-click Uninstall All FontShelf Fonts button.</li>
-            <li><strong>Safe Remove &amp; Restore:</strong> User fonts uninstalled individually or via the one-click Uninstall All FontShelf Fonts action are sent to the Windows Recycle Bin and staged in the <strong>Removed</strong> tab so you can restore or permanently delete them anytime with inline right-panel confirmation.</li>
-          </ul>
-        `
-      },
-      {
-        id: 'feat-multilingual',
-        icon: 'hgi-layer',
-        shortTitle: '13+ Languages & Bulk Workflow',
-        title: '13+ Languages, RTL & Fast Bulk Organization',
-        summary: 'Native specimens across Latin, Arabic, Hebrew, Cyrillic, Greek, Devanagari, Thai, and CJK with combinable filters.',
-        searchText: 'multilingual rtl arabic english french german spanish greek russian hebrew hindi thai japanese korean chinese list grid family grouping ctrl+click bulk select',
-        html: `
-          <ul class="web-list">
-            <li><strong>Automatic Script Detection:</strong> Native samples across English, Arabic (RTL), French, German, Spanish, Greek, Russian, Hebrew (RTL), Hindi, Thai, Japanese, Korean, and Simplified Chinese.</li>
-            <li><strong>List &amp; Grid Views + Family Grouping:</strong> Collapse multi-weight families and expand styles inline, drag overflowing rows downward to peek full text, and edit live samples across one font or all fonts.</li>
-            <li><strong>Combinable Multi-Filters:</strong> Hold <code>Ctrl+Click</code> to intersect scopes, folders, custom groups, favorites, and languages simultaneously.</li>
-            <li><strong>Select Mode &amp; Bulk Actions:</strong> Batch favorite, assign custom groups, copy font files or font names, install, remove, or restore.</li>
-          </ul>
-        `
-      },
-      {
-        id: 'feat-shortcuts',
-        icon: 'hgi-laptop-check',
-        shortTitle: 'Keyboard Shortcuts',
-        title: 'Keyboard Shortcuts & Gestures',
-        summary: 'Fast keyboard navigation designed for high-volume font libraries.',
-        searchText: 'shortcuts keyboard ctrl+k ctrl+click ctrl+v shift+click arrow up down f11 escape drag peek zoom',
-        html: `
-          <table class="kv-table">
-            <thead><tr><th>Action</th><th>Shortcut / Gesture</th></tr></thead>
-            <tbody>
-              <tr><td>Focus search</td><td><code>Ctrl + K</code></td></tr>
-              <tr><td>Combine sidebar filters</td><td><code>Ctrl + Click</code> on scopes, folders, groups, languages</td></tr>
-              <tr><td>Paste image for Visual Search</td><td><code>Ctrl + V</code></td></tr>
-              <tr><td>Range / Multi-select rows</td><td><code>Shift + Click</code> / <code>Ctrl + Click</code></td></tr>
-              <tr><td>Navigate font list</td><td><code>Arrow Up</code> / <code>Arrow Down</code></td></tr>
-              <tr><td>Zoom interface in / out</td><td><code>Ctrl +</code> / <code>Ctrl -</code></td></tr>
-              <tr><td>Toggle maximize</td><td><code>F11</code></td></tr>
-              <tr><td>Close panel, warning, or selection</td><td><code>Escape</code></td></tr>
-              <tr><td>Peek overflowing sample text</td><td>Drag bottom edge of any list row</td></tr>
-            </tbody>
-          </table>
-        `
+        id: 'features-all',
+        isFeatures: true,
+        shortTitle: 'All 18 Features',
+        title: '18 Key Features',
+        summary: 'Complete numbered breakdown of FontShelf capabilities and shortcuts.',
+        searchText: 'features visual search themes google fonts folders multilingual rtl sample editor grid list grouping multi-filters bulk select restore validation performance one-time purchase'
       }
     ]
   },
@@ -876,6 +1093,8 @@ const PAGE_ORDER = ['home', 'features', 'download', 'faq', 'privacy', 'font-acce
 const state = {
   page: 'home',
   selectedCardId: null,
+  selectedFeatureId: null,
+  featureCategory: 'All',
   selectedFaqId: FAQ_ITEMS[0].id,
   openFaqIds: new Set([FAQ_ITEMS[0].id, FAQ_ITEMS[1].id]),
   search: '',
@@ -1258,9 +1477,98 @@ function renderFaqHtml() {
   `;
 }
 
+function renderFeaturesHtml() {
+  const activeCat = state.featureCategory || 'All';
+  const visibleFeatures = activeCat === 'All'
+    ? FEATURE_ITEMS
+    : FEATURE_ITEMS.filter(f => f.category === activeCat);
+
+  const catButtons = FEATURE_CATEGORIES.map(cat => {
+    const cnt = cat === 'All' ? FEATURE_ITEMS.length : FEATURE_ITEMS.filter(f => f.category === cat).length;
+    const isAct = cat === activeCat;
+    return `
+      <button class="feature-cat-btn${isAct ? ' active' : ''}" type="button" data-feature-cat="${escapeHtml(cat)}">
+        <span>${escapeHtml(cat)}</span>
+        <span class="feature-cat-count">${cnt}</span>
+      </button>
+    `;
+  }).join('');
+
+  const featureCards = visibleFeatures.map(f => {
+    const isSel = state.selectedFeatureId === f.id;
+    return `
+      <article class="web-card feature-card${isSel ? ' is-selected' : ''}" data-feature-id="${escapeHtml(f.id)}" id="card-${escapeHtml(f.id)}">
+        <div class="feature-card-top">
+          <div class="feature-title-wrap">
+            <span class="feature-num-pill">${escapeHtml(f.num)}</span>
+            <h2 class="web-card-title">
+              <i class="hgi-stroke ${escapeHtml(f.icon)}" aria-hidden="true"></i>
+              <span>${escapeHtml(f.title)}</span>
+            </h2>
+          </div>
+          <span class="feature-cat-tag">${escapeHtml(f.category)}</span>
+        </div>
+        <p class="web-card-subtitle">${escapeHtml(f.summary)}</p>
+        <ul class="web-list">
+          ${f.details.map(d => `<li>${d}</li>`).join('')}
+        </ul>
+        <div class="chip-row">
+          ${f.tags.map(t => `<span class="chip">${escapeHtml(t)}</span>`).join('')}
+        </div>
+      </article>
+    `;
+  }).join('');
+
+  const kbd = (...keys) => `<span class="site-kbd-group">${keys.map(k => `<kbd class="site-kbd">${escapeHtml(k)}</kbd>`).join('')}</span>`;
+
+  return `
+    <article class="web-card" style="cursor:default">
+      <div class="web-card-head">
+        <h2 class="web-card-title">
+          <i class="hgi-stroke hgi-star" aria-hidden="true"></i>
+          <span>Key Features</span>
+        </h2>
+        <span class="chip is-accent">${FEATURE_ITEMS.length} Features</span>
+      </div>
+      <p class="web-card-subtitle">Every core capability built into FontShelf for Windows 11—from 100% offline visual font identification and dynamic image themes to 2,000+ built-in Google Fonts and scoped per-user font safety.</p>
+      <div class="feature-filter-bar" role="tablist" aria-label="Filter features by category">
+        ${catButtons}
+      </div>
+    </article>
+
+    <div class="feature-list">${featureCards}</div>
+
+    <article class="web-card${state.selectedFeatureId === 'feat-shortcuts' ? ' is-selected' : ''}" data-feature-id="feat-shortcuts" id="card-feat-shortcuts">
+      <div class="web-card-head">
+        <h2 class="web-card-title">
+          <i class="hgi-stroke hgi-laptop-check" aria-hidden="true"></i>
+          <span>Keyboard Shortcuts &amp; Gestures</span>
+        </h2>
+        <span class="feature-cat-tag">Reference</span>
+      </div>
+      <p class="web-card-subtitle">Fast keyboard navigation and gestures designed for high-volume font libraries.</p>
+      <table class="kv-table">
+        <thead><tr><th>Action</th><th>Shortcut / Gesture</th></tr></thead>
+        <tbody>
+          <tr><td>Focus font search</td><td>${kbd('Ctrl', 'K')}</td></tr>
+          <tr><td>Combine sidebar filters</td><td>${kbd('Ctrl', 'Click')} on scopes, folders, groups, or languages</td></tr>
+          <tr><td>Paste image for Visual Search</td><td>${kbd('Ctrl', 'V')}</td></tr>
+          <tr><td>Range or multi-select rows</td><td>${kbd('Shift', 'Click')} / ${kbd('Ctrl', 'Click')}</td></tr>
+          <tr><td>Navigate font list</td><td>${kbd('↑')} / ${kbd('↓')}</td></tr>
+          <tr><td>Zoom interface in / out</td><td>${kbd('Ctrl', '+')} / ${kbd('Ctrl', '-')}</td></tr>
+          <tr><td>Toggle maximize</td><td>${kbd('F11')}</td></tr>
+          <tr><td>Close panel, warning, or selection</td><td>${kbd('Esc')}</td></tr>
+          <tr><td>Peek overflowing sample text</td><td>Drag bottom edge of any list row</td></tr>
+        </tbody>
+      </table>
+    </article>
+  `;
+}
+
 function renderCardHtml(card, selectedId) {
   if (card.isHero) return renderHeroHtml();
   if (card.isFaq) return renderFaqHtml();
+  if (card.isFeatures) return renderFeaturesHtml();
   const isSel = selectedId === card.id;
   return `
     <article class="web-card${isSel ? ' is-selected' : ''}" data-card-id="${escapeHtml(card.id)}" id="card-${escapeHtml(card.id)}">
@@ -1283,7 +1591,20 @@ function renderContextPanel() {
   let title = pageObj.context.title || pageObj.title;
   let lead = pageObj.context.lead || '';
 
-  if (state.page === 'faq' && state.selectedFaqId && !state.search) {
+  if (state.page === 'features' && state.selectedFeatureId && !state.search) {
+    if (state.selectedFeatureId === 'feat-shortcuts') {
+      eyebrow = 'REFERENCE';
+      title = 'Keyboard Shortcuts & Gestures';
+      lead = 'Fast keyboard navigation, multi-filter gestures, zoom controls, and row-peek interactions.';
+    } else {
+      const ft = FEATURE_ITEMS.find(x => x.id === state.selectedFeatureId);
+      if (ft) {
+        eyebrow = `FEATURE ${ft.num} OF ${FEATURE_ITEMS.length}`;
+        title = ft.shortTitle;
+        lead = ft.summary;
+      }
+    }
+  } else if (state.page === 'faq' && state.selectedFaqId && !state.search) {
     const fq = FAQ_ITEMS.find(x => x.id === state.selectedFaqId);
     if (fq) {
       eyebrow = 'SELECTED QUESTION';
@@ -1305,7 +1626,19 @@ function renderContextPanel() {
 
   // Clean "On This Page" section outline for effortless navigation
   let outlineHtml = '';
-  if (state.page === 'faq') {
+  if (state.page === 'features') {
+    outlineHtml = `
+      <div class="ctx-block">
+        <span class="ctx-block-label">All ${FEATURE_ITEMS.length} Features</span>
+        <div class="ctx-outline">
+          ${FEATURE_ITEMS.map(ft => `
+            <button class="ctx-outline-btn${state.selectedFeatureId === ft.id ? ' active' : ''}" type="button" data-outline-feature="${escapeHtml(ft.id)}">${escapeHtml(ft.num)}. ${escapeHtml(ft.shortTitle)}</button>
+          `).join('')}
+          <button class="ctx-outline-btn${state.selectedFeatureId === 'feat-shortcuts' ? ' active' : ''}" type="button" data-outline-feature="feat-shortcuts">Keyboard Shortcuts</button>
+        </div>
+      </div>
+    `;
+  } else if (state.page === 'faq') {
     outlineHtml = `
       <div class="ctx-block">
         <span class="ctx-block-label">Questions</span>
@@ -1361,6 +1694,25 @@ function renderSearchResults(query) {
 
   for (const pid of PAGE_ORDER) {
     const pageObj = PAGES[pid];
+    if (pid === 'features') {
+      for (const ft of FEATURE_ITEMS) {
+        const hay = `features ${ft.num} ${ft.category} ${ft.title} ${ft.summary} ${ft.details.join(' ')} ${ft.tags.join(' ')} ${ft.searchText}`.toLowerCase();
+        if (terms.every(t => hay.includes(t))) {
+          hits.push({
+            page: pageObj,
+            card: { id: ft.id, title: `${ft.num}. ${ft.title}`, summary: ft.summary }
+          });
+        }
+      }
+      const shortcutHay = 'features keyboard shortcuts gestures ctrl+k ctrl+click ctrl+v shift+click arrow zoom f11 escape drag peek';
+      if (terms.every(t => shortcutHay.includes(t))) {
+        hits.push({
+          page: pageObj,
+          card: { id: 'feat-shortcuts', title: 'Keyboard Shortcuts & Gestures', summary: 'Fast keyboard navigation and gestures for FontShelf.' }
+        });
+      }
+      continue;
+    }
     if (pid === 'faq') {
       for (const fq of FAQ_ITEMS) {
         const hay = `faq ${fq.q} ${fq.a} ${fq.ctxTitle} ${fq.ctxLead}`.toLowerCase();
@@ -1606,6 +1958,25 @@ function bindEvents() {
   });
 
   els.pageContent?.addEventListener('click', e => {
+    const featCatBtn = e.target.closest('[data-feature-cat]');
+    if (featCatBtn) {
+      state.featureCategory = featCatBtn.dataset.featureCat || 'All';
+      state.selectedFeatureId = null;
+      renderActivePage({ scrollTop: false });
+      return;
+    }
+
+    const featCardEl = e.target.closest('[data-feature-id]');
+    if (featCardEl && !e.target.closest('a, button, pre')) {
+      const fid = featCardEl.dataset.featureId;
+      state.selectedFeatureId = fid;
+      $$('[data-feature-id]', els.pageContent).forEach(el => {
+        el.classList.toggle('is-selected', el.dataset.featureId === fid);
+      });
+      renderContextPanel();
+      return;
+    }
+
     const faqAllBtn = e.target.closest('[data-faq-toggle-all]');
     if (faqAllBtn) {
       if (state.openFaqIds.size === FAQ_ITEMS.length) {
@@ -1660,6 +2031,10 @@ function bindEvents() {
     if (jumpCard) {
       const targetPage = jumpCard.dataset.jumpPage;
       const targetCard = jumpCard.dataset.jumpCard;
+      if (targetPage === 'features' && targetCard) {
+        state.featureCategory = 'All';
+        state.selectedFeatureId = targetCard;
+      }
       if (targetPage === 'faq' && targetCard) {
         state.openFaqIds.add(targetCard);
         state.selectedFaqId = targetCard;
@@ -1679,8 +2054,29 @@ function bindEvents() {
     }
   });
 
-  // Right Context Panel: section outline jump & FAQ outline jump
+  // Right Context Panel: section outline jump, feature outline jump & FAQ outline jump
   els.contextInner?.addEventListener('click', e => {
+    const outFeat = e.target.closest('[data-outline-feature]');
+    if (outFeat) {
+      const fid = outFeat.dataset.outlineFeature;
+      const needsResetCat = state.featureCategory !== 'All' && fid !== 'feat-shortcuts' &&
+        !FEATURE_ITEMS.some(x => x.id === fid && x.category === state.featureCategory);
+      if (needsResetCat) state.featureCategory = 'All';
+      state.selectedFeatureId = fid;
+      if (needsResetCat) {
+        renderActivePage({ scrollTop: false, focusCardId: fid });
+      } else {
+        $$('[data-feature-id]', els.pageContent).forEach(el => {
+          el.classList.toggle('is-selected', el.dataset.featureId === fid);
+        });
+        renderContextPanel();
+        const target = document.getElementById(`card-${fid}`);
+        target?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+      closeDrawers();
+      return;
+    }
+
     const outCard = e.target.closest('[data-outline-card]');
     if (outCard) {
       const cid = outCard.dataset.outlineCard;

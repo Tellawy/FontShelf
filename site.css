@@ -869,6 +869,136 @@ body.is-resizing-panels * {
   word-break: normal;
 }
 
+/* Counted Features Tab */
+.feature-filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  margin-top: 2px;
+}
+
+.feature-cat-btn {
+  height: 28px;
+  padding: 0 10px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--chip-bg);
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: background 0.13s ease, color 0.13s ease, border-color 0.13s ease;
+}
+
+.feature-cat-btn:hover {
+  background: var(--hover-bg);
+  color: var(--text);
+  border-color: var(--line-strong);
+}
+
+.feature-cat-btn.active {
+  background: var(--card-selected);
+  color: var(--text);
+  border-color: var(--line-strong);
+}
+
+.feature-cat-count {
+  font-size: 11px;
+  color: var(--dim);
+  font-variant-numeric: tabular-nums;
+}
+
+.feature-cat-btn.active .feature-cat-count {
+  color: var(--muted);
+}
+
+.feature-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.feature-card {
+  gap: 10px;
+}
+
+.feature-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.feature-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  min-width: 0;
+}
+
+.feature-num-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 26px;
+  height: 22px;
+  padding: 0 6px;
+  border-radius: 6px;
+  background: var(--chip-bg);
+  border: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  flex-shrink: 0;
+}
+
+.feature-card.is-selected .feature-num-pill {
+  color: var(--blue);
+  border-color: var(--line-strong);
+}
+
+.feature-cat-tag {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--dim);
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: var(--chip-bg);
+  border: 1px solid var(--line);
+  flex-shrink: 0;
+}
+
+.site-kbd-group {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  vertical-align: -1px;
+}
+
+.site-kbd {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 6px;
+  font-family: var(--font-ui);
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 1;
+  color: var(--muted);
+  background: var(--chip-bg);
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
 /* Hero Card & Full Edge-to-Edge Screenshot Showcase */
 .hero-card {
   padding: 0;
